@@ -6,8 +6,7 @@ const time = Variable("").poll(1000, "date")
 export default function MenuButton() {
     return <menubutton
         hexpand
-        halign={Gtk.Align.CENTER}
-    >
+        halign={Gtk.Align.CENTER}>
         <label label={time()} />
         <popover>
             <Gtk.Calendar />

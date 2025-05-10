@@ -1,6 +1,6 @@
 import { App, Astal, Gtk, Gdk } from "astal/gtk4"
 import Launcher from "./Launcher"
-import MenuButton from "./MenuButton"
+import Clock from "./Clock"
 import Workspaces from "./Workspaces"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
@@ -22,7 +22,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                 <Workspaces />
             </box>
             <box />
-            <MenuButton />
+            <Clock />
         </centerbox>
     </window>
 }
