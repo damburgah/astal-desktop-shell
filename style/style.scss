@@ -24,4 +24,24 @@ window.Bar {
   all: unset;
   background: $background;
   color: $foreground;
+  font-size: 18px;
+  font-stretch: condensed;
+
+  & centerbox box {
+    background: $orange;
+  }
+
+  button {
+    padding: 8px;
+
+    image {
+      // color: $foreground;
+      color: $green;
+    }
+  }
+
+  button:hover {
+    background: $green;
+    color: $foreground;
+  }
 }

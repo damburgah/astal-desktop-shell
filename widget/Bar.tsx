@@ -18,7 +18,8 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           cssName="centerbox"
           orientation={VERTICAL}
         >
-            <box orientation={VERTICAL}>
+            <box
+                orientation={VERTICAL}>
                 <Launcher />
                 <Workspaces />
             </box>

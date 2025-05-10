@@ -1,11 +1,10 @@
-import { Gtk } from "astal/gtk4"
-
 export default function Launcher() {
     return <button
         onClicked="echo launching"
-        hexpand
-        halign={Gtk.Align.CENTER}
-    >
-        
+        hexpand>
+        <image
+            file="assets/nix-snowflake-white.svg"
+            pixelSize={24}
+        />
     </button>
 }
