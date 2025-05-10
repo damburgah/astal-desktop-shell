@@ -1,20 +1,27 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
+@use "palette";
+$foreground: palette.$base00;
+$lightForeground: palette.$base01;
+$lighterForeground: palette.$base02;
+$lightestForeground: palette.$base03;
+$darkBackground: palette.$base04;
+$background: palette.$base05;
+$lightBackground: palette.$base06;
+$lighterBackground: palette.$base07;
+$red: palette.$base08;
+$orange: palette.$base09;
+$yellow: palette.$base0A;
+$green: palette.$base0B;
+$teal: palette.$base0C;
+$blue: palette.$base0D;
+$purple: palette.$base0E;
+$rust: palette.$base0F;
+
+window.Bar * {
+  all: unset;
+}
 
 window.Bar {
-    background: transparent;
-    color: $fg-color;
-    font-weight: bold;
-
-    >centerbox {
-        background: $bg-color;
-        border-radius: 10px;
-        margin: 8px;
-    }
-
-    button {
-        border-radius: 8px;
-        margin: 2px;
-    }
+  all: unset;
+  background: $background;
+  color: $foreground;
 }

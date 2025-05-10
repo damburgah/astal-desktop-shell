@@ -5,6 +5,7 @@ import Workspaces from "./Workspaces"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
     const { LEFT, BOTTOM, TOP } = Astal.WindowAnchor
+    const { VERTICAL } = Gtk.Orientation
 
     return <window
         visible
@@ -15,9 +16,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         application={App}>
         <centerbox
           cssName="centerbox"
-          orientation={Gtk.Orientation.VERTICAL}
+          orientation={VERTICAL}
         >
-            <box>
+            <box orientation={VERTICAL}>
                 <Launcher />
                 <Workspaces />
             </box>
