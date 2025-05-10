@@ -2,9 +2,9 @@ export default function Launcher() {
     return <button
         onClicked="echo launching"
         hexpand>
-        <image
-            file="assets/nix-snowflake-white.svg"
-            pixelSize={24}
-        />
+            {/* <image iconName="system-run-symbolic" /> */}
+            {/* <image iconName="nix-symbolic" /> */}
+            <image iconName="nix" />
+            {/* <image file ="assets/nix-symbolic.svg" /> */}
     </button>
 }
