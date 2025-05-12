@@ -2,23 +2,28 @@ import { bind, Variable } from "astal"
 import Hyprland from "gi://AstalHyprland"
 
 const hypr = Hyprland.get_default()
-
 const wsLabels = ["α", "β", "γ", "δ", "ε", "ζ"]
 
-function WorkspaceButton(index: number, label: string) {
+const WorkspaceButton = (index: number, label: string) => {
+    const wsId = index + 1
+
     const classNames = Variable.derive(
         [bind(hypr, "focusedWorkspace")],
         (fw) => {
             const classes = ["Workspace"]
-            if (fw?.id === index + 1) classes.push("Active")
+            if (fw?.id === wsId) classes.push("Active")
             return classes
         }
     )
 
     return <button
         cssClasses={classNames()}
-        onClicked="echo launching"
-        hexpand>
+        hexpand
+        onClicked={() => {
+            if (hypr.focusedWorkspace?.id !== wsId)
+                hypr.dispatch("workspace", wsId.toString())
+        }}
+        tooltipText={`Switch to workspace ${wsId}`}>
         <label label={label} />
     </button>
 }

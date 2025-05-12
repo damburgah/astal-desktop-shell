@@ -28,6 +28,12 @@ window.Bar {
     all: unset;
   }
 
+  tooltip {
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
+
   centerbox box {
     background: $green;
 
