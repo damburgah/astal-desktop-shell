@@ -5,21 +5,24 @@ const hypr = Hyprland.get_default()
 
 const wsLabels = ["α", "β", "γ", "δ", "ε", "ζ"]
 
-export default function Workspaces() {
-    return wsLabels.map((label, i) => {
-        const classNames = Variable.derive(
-            [bind(hypr, "focusedWorkspace")
-        ], (fw) => {
+function WorkspaceButton(index: number, label: string) {
+    const classNames = Variable.derive(
+        [bind(hypr, "focusedWorkspace")],
+        (fw) => {
             const classes = ["Workspace"]
-            if (fw.id === i + 1) classes.push("Active")
+            if (fw?.id === index + 1) classes.push("Active")
             return classes
-        })
+        }
+    )
 
-        return <button
-                cssClasses={classNames()}
-                onClicked="echo launching"
-                hexpand>
-                <label label={label} />
-        </button>
-    })
+    return <button
+        cssClasses={classNames()}
+        onClicked="echo launching"
+        hexpand>
+        <label label={label} />
+    </button>
+}
+
+export default function Workspaces() {
+    return wsLabels.map((label, i) => WorkspaceButton(i, label))
 }
