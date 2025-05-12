@@ -16,34 +16,48 @@ $blue: palette.$base0D;
 $purple: palette.$base0E;
 $rust: palette.$base0F;
 
-window.Bar * {
-  all: unset;
-}
-
 window.Bar {
   all: unset;
   background: $background;
   color: $foreground;
   font-size: 18px;
   font-stretch: condensed;
+  padding: 3px;
 
-  & centerbox box {
-    background: $orange;
+  * {
+    all: unset;
   }
 
-  button {
-    padding: 8px;
-
-    image {
-      // color: $foreground;
-      color: $green;
-    }
-  }
-
-  button:hover {
+  centerbox box {
     background: $green;
-    image {
-      color: $foreground;
+
+    box {
+      padding: 7px;
+    }
+
+    button {
+      padding: 8px;
+
+      &:hover {
+        background: $green;
+        color: $red;
+      };
+
+      &.Launcher {
+        background: $foreground;
+
+        image {
+          color: $background;
+        }
+
+        &:hover {
+          background: $lightForeground;
+
+          image {
+            color: $blue;
+          }
+        }
+      }
     }
   }
 }

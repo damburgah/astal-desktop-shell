@@ -24,7 +24,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                 <Workspaces />
             </box>
             <box />
-            <Clock />
+            <box>
+                <Clock />
+            </box>
         </centerbox>
     </window>
 }
