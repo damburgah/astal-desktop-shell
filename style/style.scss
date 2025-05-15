@@ -18,7 +18,7 @@ $rust: palette.$base0F;
 
 window.Bar {
   all: unset;
-  background: $background;
+  background: rgba($background, 0.3);
   color: $foreground;
   font-size: 18px;
   font-stretch: condensed;
@@ -35,14 +35,19 @@ window.Bar {
   }
 
   centerbox box {
-    background: $green;
 
     box {
+      background: $green;
       padding: 7px;
     }
 
     button {
-      padding: 8px;
+      background: $green;
+      padding: 7px;
+
+      &:last-child {
+        background: $blue;
+      }
 
       &:hover {
         background: $green;
@@ -50,7 +55,9 @@ window.Bar {
       };
 
       &.Launcher {
-        background: $foreground;
+        // background: $foreground;
+        background: transparent;
+        border: 5px solid $red;
 
         image {
           color: $background;
