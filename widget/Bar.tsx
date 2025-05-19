@@ -2,10 +2,14 @@ import { App, Astal, Gtk, Gdk } from "astal/gtk4"
 import Launcher from "./Launcher"
 import Clock from "./Clock"
 import Workspaces from "./Workspaces"
+import { Variable } from "astal"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
     const { LEFT, BOTTOM, TOP } = Astal.WindowAnchor
     const { VERTICAL } = Gtk.Orientation
+
+    // Shared variable to track clock width
+    const clockWidth = Variable(0)
 
     return <window
         visible
@@ -20,12 +24,12 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         >
             <box
                 orientation={VERTICAL}>
-                <Launcher />
+                <Launcher size={clockWidth} />
                 <Workspaces />
             </box>
             <box />
             <box>
-                <Clock />
+                <Clock size={clockWidth} />
             </box>
         </centerbox>
     </window>

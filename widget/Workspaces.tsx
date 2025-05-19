@@ -1,8 +1,13 @@
+import { Gtk } from "astal/gtk4"
 import { bind, Variable } from "astal"
 import Hyprland from "gi://AstalHyprland"
 
 const hypr = Hyprland.get_default()
 const wsLabels = ["α", "β", "γ", "δ", "ε", "ζ"]
+
+export default function Workspaces() {
+    return wsLabels.map((label, i) => WorkspaceButton(i, label))
+}
 
 const WorkspaceButton = (index: number, label: string) => {
     const wsId = index + 1
@@ -24,10 +29,12 @@ const WorkspaceButton = (index: number, label: string) => {
                 hypr.dispatch("workspace", wsId.toString())
         }}
         tooltipText={`Switch to workspace ${wsId}`}>
-        <label label={label} />
-    </button>
-}
 
-export default function Workspaces() {
-    return wsLabels.map((label, i) => WorkspaceButton(i, label))
+        <box
+            halign={Gtk.Align.CENTER}
+            cssClasses={["inner"]}
+        >
+            <label label={label} />
+        </box>
+    </button>
 }

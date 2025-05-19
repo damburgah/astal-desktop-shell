@@ -18,11 +18,9 @@ $rust: palette.$base0F;
 
 window.Bar {
   all: unset;
-  background: rgba($background, 0.3);
   color: $foreground;
   font-size: 18px;
   font-stretch: condensed;
-  padding: 3px;
 
   * {
     all: unset;
@@ -36,32 +34,29 @@ window.Bar {
 
   centerbox box {
 
-    box {
-      background: $green;
-      padding: 7px;
+    .Clock {
+      background: transparent;
+      border: 3px solid rgba($background, 0.3);
+      // box-shadow: inset 0 0 0 50px $background;
+      padding-bottom: 5px;
+      padding-top: 5px;
     }
 
     button {
-      background: $green;
-      padding: 7px;
+      background: transparent;
+      border: 3px solid rgba($background, 0.3);
+      // padding: 7px;
 
-      &:last-child {
-        background: $blue;
-      }
+      // &:last-child {
+      //   background: $blue;
+      // }
 
       &:hover {
-        background: $green;
         color: $red;
       };
 
       &.Launcher {
-        // background: $foreground;
-        background: transparent;
-        border: 5px solid $red;
-
-        image {
-          color: $background;
-        }
+        background: rgba($foreground, 0.95);
 
         &:hover {
           background: $lightForeground;
@@ -70,6 +65,15 @@ window.Bar {
             color: $blue;
           }
         }
+      }
+
+      &.Launcher box {
+        // box-shadow: inset 0 0 0 10px rgba($foreground, 0.1);
+
+        image {
+          color: $background;
+        }
+
       }
     }
   }
