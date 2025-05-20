@@ -5,10 +5,6 @@ import Hyprland from "gi://AstalHyprland"
 const hypr = Hyprland.get_default()
 const wsLabels = ["α", "β", "γ", "δ", "ε", "ζ"]
 
-export default function Workspaces() {
-    return wsLabels.map((label, i) => WorkspaceButton(i, label))
-}
-
 const WorkspaceButton = (index: number, label: string) => {
     const wsId = index + 1
 
@@ -37,4 +33,10 @@ const WorkspaceButton = (index: number, label: string) => {
             <label label={label} />
         </box>
     </button>
+}
+
+export default function Workspaces() {
+    return <>
+        {wsLabels.map((label, i) => WorkspaceButton(i, label))}
+    </>
 }
