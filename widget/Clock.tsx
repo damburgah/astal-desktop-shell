@@ -7,13 +7,15 @@ export default function Clock() {
     return <box
         cssClasses={["Clock"]}
         hexpand>
-        <box
-            hexpand
-            halign={Gtk.Align.CENTER}
-        >
-            <label
-                label={time()}
-            />
+        <box>
+            <box
+                hexpand
+                halign={Gtk.Align.CENTER}
+            >
+                <label
+                    label={time()}
+                />
+            </box>
         </box>
     </box>
 }

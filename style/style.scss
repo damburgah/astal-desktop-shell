@@ -1,12 +1,12 @@
 @use "palette";
-$foreground: palette.$base00;
-$lightForeground: palette.$base01;
-$lighterForeground: palette.$base02;
-$lightestForeground: palette.$base03;
-$darkBackground: palette.$base04;
-$background: palette.$base05;
-$lightBackground: palette.$base06;
-$lighterBackground: palette.$base07;
+$fg: palette.$base00;
+$fg-light: palette.$base01;
+$fg-lighter: palette.$base02;
+$fg-lightest: palette.$base03;
+$bg-dark: palette.$base04;
+$bg: palette.$base05;
+$bg-light: palette.$base06;
+$bg-lighter: palette.$base07;
 $red: palette.$base08;
 $orange: palette.$base09;
 $yellow: palette.$base0A;
@@ -16,9 +16,14 @@ $blue: palette.$base0D;
 $purple: palette.$base0E;
 $rust: palette.$base0F;
 
+@mixin background-box($bg-color: $bg, $alpha: 0.95, $padding: 5px) {
+  background: rgba($bg-color, $alpha);
+  padding: $padding;
+}
+
 window.Bar {
   all: unset;
-  color: $foreground;
+  color: $fg;
   font-size: 18px;
   font-stretch: condensed;
 
@@ -33,47 +38,72 @@ window.Bar {
   }
 
   centerbox box {
-
     .Clock {
       background: transparent;
-      border: 3px solid rgba($background, 0.3);
-      // box-shadow: inset 0 0 0 50px $background;
-      padding-bottom: 5px;
-      padding-top: 5px;
+      border: 3px solid rgba($bg, 0.3);
+
+      >box {
+        @include background-box();
+      }
     }
 
     button {
       background: transparent;
-      border: 3px solid rgba($background, 0.3);
-      // padding: 7px;
+      border: solid rgba($bg, 0.3);
+      border-width: 1px 3px 2px;
 
-      // &:last-child {
-      //   background: $blue;
-      // }
+      &:first-child {
+        border-top-width: 3px;
+      }
 
-      &:hover {
-        color: $red;
-      };
+      &:last-child {
+        border-bottom-width: 3px;
+      }
 
       &.Launcher {
-        background: rgba($foreground, 0.95);
+        >box {
+          @include background-box($fg);
+
+          box image {
+            color: $bg;
+          }
+        }
 
         &:hover {
-          background: $lightForeground;
+          >box {
+            @include background-box($fg-light);
+          }
 
           image {
-            color: $blue;
+            color: $teal;
           }
         }
       }
 
-      &.Launcher box {
-        // box-shadow: inset 0 0 0 10px rgba($foreground, 0.1);
+      &.Launcher box image {
+        color: $bg;
+      }
 
-        image {
-          color: $background;
+      &.Workspace {
+        >box {
+          background: rgba($bg-dark, 0.2);
+          padding: 5px 0;
         }
 
+        &.Active >box,
+        &.Occupied >box {
+          background: rgba($fg, 0.95);
+          color: $bg;
+        }
+
+        &.Active >box {
+          color: $teal;
+        }
+
+        &:hover >box {
+            background: rgba($fg-light, 0.95);
+            color: $teal;
+        }
       }
     }
   }

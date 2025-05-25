@@ -13,6 +13,10 @@ const WorkspaceButton = (index: number, label: string) => {
         (fw) => {
             const classes = ["Workspace"]
             if (fw?.id === wsId) classes.push("Active")
+
+            const occupied = hypr.get_workspace(wsId)?.get_clients().length > 0
+            occupied && classes.push("Occupied")
+
             return classes
         }
     )
@@ -26,11 +30,14 @@ const WorkspaceButton = (index: number, label: string) => {
         }}
         tooltipText={`Switch to workspace ${wsId}`}>
 
-        <box
-            halign={Gtk.Align.CENTER}
-            cssClasses={["inner"]}
-        >
-            <label label={label} />
+        <box>
+            <box
+                hexpand
+                halign={Gtk.Align.CENTER}
+                cssClasses={["inner"]}
+            >
+                <label label={label} />
+            </box>
         </box>
     </button>
 }
