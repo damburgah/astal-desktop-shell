@@ -92,16 +92,17 @@ window.Bar {
 
         &.Active >box,
         &.Occupied >box {
-          background: rgba($fg, 0.95);
+          @include background-box($fg);
           color: $bg;
         }
 
         &.Active >box {
-          color: $teal;
+          @include background-box($purple);
+          color: $fg;
         }
 
         &:hover >box {
-            background: rgba($fg-light, 0.95);
+            @include background-box($fg-light);
             color: $teal;
         }
       }

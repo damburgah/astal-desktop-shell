@@ -4,31 +4,42 @@ import Hyprland from "gi://AstalHyprland"
 
 const hypr = Hyprland.get_default()
 const wsLabels = ["α", "β", "γ", "δ", "ε", "ζ"]
-const wsIds = wsLabels.map((_, i) => i + 1)
 
-const getOccupiedStates = () =>
-    wsIds.map(wsId => hypr.get_workspace(wsId)?.get_clients().length > 0)
+const occupiedWorkspaces = Variable(
+    wsLabels.map((_, i) => {
+        const wsId = i + 1
+        return hypr.get_workspace(wsId)?.get_clients().length > 0
+    })
+)
 
-const occupiedWorkspaces = Variable(getOccupiedStates())
+hypr.connect("clientMoved", () => {
+    occupiedWorkspaces.set(
+        wsLabels.map((_, i) => {
+            const wsId = i + 1
+            return hypr.get_workspace(wsId)?.get_clients().length > 0
+        })
+    )
+})
 
-const updateOccupied = () => {
-    occupiedWorkspaces.set(getOccupiedStates())
-}
-
-for (const signal of ["client-added", "client-moved", "client-removed"]) {
-    hypr.connect(signal, updateOccupied)
-}
-
-const WorkspaceButton = (index: number, label: string): JSX.Element => {
+const WorkspaceButton = (index: number, label: string) => {
     const wsId = index + 1
 
     const classNames = Variable.derive(
-        [bind(hypr, "focusedWorkspace"), occupiedWorkspaces],
+        [bind(hypr, "focusedWorkspace")],
         (fw, occupied) => {
             const classes = ["Workspace"]
+            const workspace = hypr.get_workspace(wsId)
+
+            hypr.connect("client-moved", () => {
+                return self
+            })
+
             if (fw?.id === wsId) classes.push("Active")
-            if (occupied?.[index]) classes.push("Occupied")
-            
+            if (workspace?.get_clients().length > 0) classes.push("Occupied")
+
+            // const occupied = hypr.get_workspace(wsId)?.get_clients().length > 0
+            // occupied && classes.push("Occupied")
+
             return classes
         }
     )
@@ -37,9 +48,8 @@ const WorkspaceButton = (index: number, label: string): JSX.Element => {
         cssClasses={classNames()}
         hexpand
         onClicked={() => {
-            if (hypr.focusedWorkspace?.id !== wsId) {
+            if (hypr.focusedWorkspace?.id !== wsId)
                 hypr.dispatch("workspace", wsId.toString())
-            }
         }}
         tooltipText={`Switch to workspace ${wsId}`}>
 
