@@ -5,8 +5,7 @@ const time = Variable("").poll(1000, "date +%H:%M")
 
 export default function Clock() {
     return <box
-        cssClasses={["Clock"]}
-        hexpand>
+        cssClasses={["Clock"]}>
         <box>
             <box
                 hexpand

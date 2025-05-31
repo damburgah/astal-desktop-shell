@@ -14,19 +14,24 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={LEFT | BOTTOM | TOP}
         application={App}>
-        <centerbox
-          cssName="centerbox"
+        <box
+          // cssName="centerbox"
           orientation={VERTICAL}
+          vexpand
         >
             <box
                 orientation={VERTICAL}>
                 <Launcher />
                 <Workspaces />
             </box>
-            <box />
+            <box
+                cssClasses={["Middle"]}
+                // orientation={VERTICAL}
+                vexpand
+            />
             <box>
                 <Clock />
             </box>
-        </centerbox>
+        </box>
     </window>
 }
