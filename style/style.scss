@@ -72,7 +72,7 @@ window.Bar {
 
       &.Launcher {
         >box {
-          @include background-box($bg-light, 0.9);
+          @include background-box($bg-light, 0.95);
 
           box image {
             color: $fg;
