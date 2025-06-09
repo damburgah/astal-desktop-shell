@@ -28,7 +28,6 @@ const WorkspaceButton = (index: number, label: string): JSX.Element => {
             const classes = ["Workspace"]
             if (fw?.id === wsId) classes.push("Active")
             if (occupied?.[index]) classes.push("Occupied")
-            
             return classes
         }
     )
