@@ -1,7 +1,8 @@
 import { App, Astal, Gtk, Gdk } from "astal/gtk4"
 import Launcher from "./Launcher"
-import Clock from "./Clock"
 import Workspaces from "./Workspaces"
+import BatteryIndicator from "./Battery"
+import Clock from "./Clock"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
     const { LEFT, BOTTOM, TOP } = Astal.WindowAnchor
@@ -14,22 +15,31 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={LEFT | BOTTOM | TOP}
         application={App}>
-        <box
-          // cssName="centerbox"
-          orientation={VERTICAL}
-          vexpand
-        >
+        <box orientation={VERTICAL}>
+            {/* Top Section */}
             <box
-                orientation={VERTICAL}>
+                cssClasses={["TopSection"]}
+                name="TopSection"
+                orientation={VERTICAL}
+            >
                 <Launcher />
                 <Workspaces />
             </box>
+
+            {/* Spacer */}
             <box
-                cssClasses={["Middle"]}
-                // orientation={VERTICAL}
+                cssClasses={["Spacer"]}
+                name="Spacer"
                 vexpand
             />
-            <box>
+
+            {/* Bottom Section */}
+            <box
+                cssClasses={["BottomSection"]}
+                name="BottomSection"
+                orientation={VERTICAL}
+            >
+                <BatteryIndicator />
                 <Clock />
             </box>
         </box>
