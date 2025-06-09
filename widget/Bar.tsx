@@ -35,7 +35,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 
             {/* Bottom Section */}
             <box
-                cssClasses={["BottomSection"]}
+                cssClasses={["bottom-section"]}
                 name="BottomSection"
                 orientation={VERTICAL}
             >

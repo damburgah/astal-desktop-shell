@@ -47,10 +47,22 @@ window.Bar {
     min-height: 20px;
   }
 
+  .bottom-section {
+    .bar-segment {
+      border: 3px solid $bar-bg;
+      border-width: 3px 3px 2px;
+
+      >box {
+        @include background-box();
+      }
+    }
+  }
+
   box box {
     .Clock {
       background: transparent;
-      border: 3px solid $bar-bg;
+      border: solid $bar-bg;
+      border-width: 1px 3px 3px;
 
       >box {
         @include background-box();
@@ -95,6 +107,7 @@ window.Bar {
           // background: rgba($fg-dark, 0.2);
           background: $bar-bg;
           padding: 5px 0;
+          // @include background-box($bar-bg);
         }
 
         &.Active >box,
@@ -109,8 +122,8 @@ window.Bar {
         }
 
         &:hover >box {
-            @include background-box($bg-light);
-            color: $teal;
+          @include background-box($bg-light);
+          color: $teal;
         }
       }
     }
