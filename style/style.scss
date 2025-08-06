@@ -21,8 +21,15 @@ $rust: palette.$base0F;
 
 $bar-bg: rgba($bg, 0.36);
 
-@mixin background-box($bg-color: $fg, $alpha: 0.95, $padding: 5px) {
+// @mixin background-box($bg-color: $fg, $alpha: 0.95, $padding: 0px) {
+@mixin background-box(
+  $bg-color: $fg,
+  $alpha: 0.95,
+  $min-height: 32px,
+  $padding: 0 6px
+) {
   background: rgba($bg-color, $alpha);
+  min-height: $min-height;
   padding: $padding;
 }
 
@@ -44,7 +51,6 @@ window.Bar {
 
   .Spacer {
     background: $bar-bg;
-    min-height: 20px;
   }
 
   .bottom-section {
@@ -60,7 +66,7 @@ window.Bar {
 
   box box {
     .Clock {
-      background: transparent;
+      // background: transparent;
       border: solid $bar-bg;
       border-width: 1px 3px 3px;
 
@@ -70,7 +76,7 @@ window.Bar {
     }
 
     button {
-      background: transparent;
+      // background: transparent;
       border: solid $bar-bg;
       border-width: 1px 3px 2px;
 
@@ -105,9 +111,9 @@ window.Bar {
       &.Workspace {
         >box {
           // background: rgba($fg-dark, 0.2);
-          background: $bar-bg;
-          padding: 5px 0;
-          // @include background-box($bar-bg);
+          // background: $bar-bg;
+          // padding: 5px 0;
+          @include background-box($bg, 0.36);
         }
 
         &.Active >box,
