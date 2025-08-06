@@ -1,6 +1,6 @@
 import app from "ags/gtk4/app"
 import { Astal, Gtk, Gdk } from "ags/gtk4"
-import Launcher from "./Launcher"
+// import Launcher from "./Launcher"
 import Workspaces from "./Workspaces"
 import BatteryIndicator from "./Battery"
 import Clock from "./Clock"
@@ -23,8 +23,8 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
                 name="TopSection"
                 orientation={VERTICAL}
             >
-                <Launcher />
-                <Workspaces />
+                {/* <Launcher /> */}
+                {/* <Workspaces /> */}
             </box>
 
             {/* Spacer */}

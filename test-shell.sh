@@ -2,4 +2,4 @@
 
 ags quit
 
-ags run -d . --gtk4 &
+ags run -d . --gtk 4 &
