@@ -1,7 +1,7 @@
 import { Gtk } from "ags/gtk4"
-import { Variable } from "astal"
+import { createPoll } from "ags/time"
 
-const time = Variable("").poll(1000, "date +%H:%M")
+const time = createPoll("", 1000, "date +%H:%M")
 
 export default function Clock() {
     return <box
@@ -12,7 +12,7 @@ export default function Clock() {
                 halign={Gtk.Align.CENTER}
             >
                 <label
-                    label={time()}
+                    label={time}
                 />
             </box>
         </box>
