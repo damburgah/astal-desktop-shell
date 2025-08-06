@@ -1,5 +1,5 @@
 import Battery from "gi://AstalBattery"
-import { Gtk } from "astal/gtk4"
+import { Gtk } from "ags/gtk4"
 
 const bat = Battery.get_default()
 

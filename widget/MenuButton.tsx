@@ -1,4 +1,4 @@
-import { Gtk } from "astal/gtk4"
+import { Gtk } from "ags/gtk4"
 import { Variable } from "astal"
 
 const time = Variable("").poll(1000, "date")
