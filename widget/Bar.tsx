@@ -1,4 +1,5 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk4"
+import app from "ags/gtk4/app"
+import { Astal, Gtk, Gdk } from "ags/gtk4"
 import Launcher from "./Launcher"
 import Workspaces from "./Workspaces"
 import BatteryIndicator from "./Battery"
@@ -14,7 +15,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         gdkmonitor={gdkmonitor}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={LEFT | BOTTOM | TOP}
-        application={App}>
+        application={app}>
         <box orientation={VERTICAL}>
             {/* Top Section */}
             <box
